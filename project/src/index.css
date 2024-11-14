@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply text-white bg-black;
+  background: linear-gradient(145deg, #000000, #0a0118, #000000);
+}
+
+/* Matrix rain effect */
+.matrix-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: #000;
+  opacity: 0.15;
+}
+
+.matrix-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    0deg,
+    rgba(32, 0, 84, 0.1) 25%,
+    rgba(32, 0, 84, 0) 100%
+  );
+  animation: matrixRain 20s linear infinite;
+  background-size: 100% 100%;
+}
+
+@keyframes matrixRain {
+  0% { background-position: 50% -100%; }
+  100% { background-position: 50% 100%; }
+}
+
+/* Neural network nodes */
+.neural-nodes {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.neural-nodes::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background-image: 
+    radial-gradient(2px 2px at 40px 60px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 20px 50px, #4f46e5, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 30px 100px, #7c3aed, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 60px, #4f46e5, rgba(0,0,0,0));
+  background-size: 200px 200px;
+  animation: nodePulse 4s linear infinite;
+  opacity: 0.15;
+}
+
+@keyframes nodePulse {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.1);
+  }
+}
+
+/* Power lines effect */
+.power-lines {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0.1;
+}
+
+.power-lines::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 40px,
+    rgba(79, 70, 229, 0.1) 40px,
+    rgba(79, 70, 229, 0.1) 41px
+  );
+  animation: powerFlow 3s linear infinite;
+}
+
+@keyframes powerFlow {
+  0% { transform: translateX(-40px); }
+  100% { transform: translateX(0); }
+}
+
+/* Enhanced card hover effects */
+.card-hover {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 4px solid transparent;
+}
+
+.card-hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(79, 70, 229, 0) 0%,
+    rgba(79, 70, 229, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateX(10px);
+  border-left: 4px solid #4f46e5;
+}
+
+.card-hover:hover::before {
+  opacity: 1;
+}
+
+/* Text animations */
+.animate-gradient {
+  background: linear-gradient(
+    to right,
+    #4f46e5,
+    #7c3aed,
+    #4f46e5
+  );
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: gradient 8s linear infinite;
+}
+
+@keyframes gradient {
+  to { background-position: 200% center; }
+}
+
+/* Scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(79, 70, 229, 0.3);
+  border: 2px solid #000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 70, 229, 0.5);
+}
